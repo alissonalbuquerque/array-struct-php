@@ -2,6 +2,9 @@
 
 namespace Alisson\Arraystruct;
 
+use RecursiveArrayIterator;
+use RecursiveIteratorIterator;
+
 class ArrayStruct {
 
     public const _SORT_REGULAR       = SORT_REGULAR;
@@ -46,6 +49,20 @@ class ArrayStruct {
 
     public function unique(int $compare = self::_SORT_STRING) : ArrayStruct {
         return new self(array_unique($this->array, $compare));
+    }
+
+    public function join(ArrayStruct|array $array) : ArrayStruct {
+
+        $array = $array instanceof ArrayStruct ? $array->get_array() : $array;
+
+        return new self(array_merge($this->array, $array));
+    }
+
+    public function flatten(bool $preserve_keys = false) : ArrayStruct {
+
+        $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($this->array));
+
+        return new self(iterator_to_array($iterator, $preserve_keys));
     }
 
     public function map(?callable $callback) : ArrayStruct {
