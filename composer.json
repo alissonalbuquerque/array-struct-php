@@ -1,0 +1,19 @@
+{
+    "name": "alisson/arraystruct",
+    "description": "A array wrapper object and function to work with arrays in PHP",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Alisson\\Arraystruct\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Alisson Albuquerque",
+            "email": "alissonalbuquerque.dev@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
